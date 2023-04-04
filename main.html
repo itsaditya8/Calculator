@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="display">
+        <p id="result">0</p>
+      </div>
+      <div class="buttons">
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>+</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>-</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>*</button>
+        <button>0</button>
+        <button>.</button>
+        <button>/</button>
+        <button id="clear">C</button>
+        <button id="equals">=</button>
+      </div>
+    </div>
+
+    <script>
+      // Get the calculator display
+      var display = document.getElementById('result');
+
+      // Get all the calculator buttons
+      var buttons = document.querySelectorAll('.buttons button');
+
+      // Add click event listeners to all the buttons
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', function() {
+          // Get the clicked button's value
+          var value = this.innerHTML;
+
+          // If the button is "C", clear the display
+          if (value === 'C') {
+            display.innerHTML = '0';
+          }
+
+          // If the button is "=", evaluate the expression
+          else if (value === '=') {
+            display.innerHTML = eval(display.innerHTML);
+          }
+
+          // Otherwise, append the button's value to the display
+          else {
+            if (display.innerHTML === '0') {
+              display.innerHTML = value;
+            } else {
+              display.innerHTML += value;
+            }
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
